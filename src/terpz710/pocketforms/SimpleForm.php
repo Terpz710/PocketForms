@@ -10,8 +10,8 @@ use pocketmine\player\Player;
 
 class SimpleForm implements Form {
     
-    private string $title;
-    private string $content;
+    private string $title = "";
+    private string $content = "";
     private array $buttons = [];
     private ?\Closure $callback = null;
 
@@ -54,7 +54,7 @@ class SimpleForm implements Form {
         return [
             "type" => "form",
             "title" => $this->title,
-            "content" => $this->content,
+            "content" => $this->content, // Now guaranteed to be set
             "buttons" => $this->buttons
         ];
     }
