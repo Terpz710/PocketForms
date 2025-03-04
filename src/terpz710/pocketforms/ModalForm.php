@@ -10,18 +10,14 @@ use pocketmine\player\Player;
 
 class ModalForm implements Form {
 
-    private string $title;
-    private string $content;
-    private string $button1;
-    private string $button2;
+    private string $title = "";
+    private string $content = "";
+    private string $button1 = "Yes";
+    private string $button2 = "No";
     private \Closure $callback;
 
-    public function __construct(string $title, string $content, string $button1, string $button2, \Closure $callback) {
-        $this->setTitle($title);
-        $this->setContent($content);
-        $this->setButton1($button1);
-        $this->setButton2($button2);
-        $this->callback = $callback;
+    public function __construct() {
+        $this->callback = function (Player $player, bool $data): void {};
     }
 
     public function setTitle(string $title) : self{
@@ -41,6 +37,11 @@ class ModalForm implements Form {
 
     public function setButton2(string $button2) : self{
         $this->button2 = $button2;
+        return $this;
+    }
+
+    public function setCallback(\Closure $callback) : self{
+        $this->callback = $callback;
         return $this;
     }
 
