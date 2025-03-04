@@ -1,0 +1,10 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/Terpz710/PocketForms
+build-by-default: true
+branches:
+- main
+projects:
+  PocketForms:
+    path: ""
+    model: virion
+    type: library
+...
