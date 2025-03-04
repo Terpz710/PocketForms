@@ -54,7 +54,7 @@ class SimpleForm implements Form {
         return [
             "type" => "form",
             "title" => $this->title,
-            "content" => $this->content, // Now guaranteed to be set
+            "content" => $this->content,
             "buttons" => $this->buttons
         ];
     }
