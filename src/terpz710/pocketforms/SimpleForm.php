@@ -9,25 +9,18 @@ use pocketmine\form\Form;
 use pocketmine\player\Player;
 
 class SimpleForm implements Form {
-
+    
     private string $title;
     private string $content;
     private array $buttons = [];
-    private \Closure $callback;
-
-    public function __construct(string $title, string $content, \Closure $callback) {
-        $this->setTitle($title);
-        $this->setContent($content);
-        $this->callback = $callback;
-    }
+    private ?\Closure $callback = null;
 
     public function setTitle(string $title) : self{
         $this->title = $title;
         return $this;
     }
 
-    public function setContent(string $content) : self 
-{
+    public function setContent(string $content) : self{
         $this->content = $content;
         return $this;
     }
@@ -41,8 +34,13 @@ class SimpleForm implements Form {
         return $this;
     }
 
+    public function setCallback(\Closure $callback) : self{
+        $this->callback = $callback;
+        return $this;
+    }
+
     public function handleResponse(Player $player, $data) : void{
-        if ($data !== null && is_int($data)) {
+        if ($this->callback !== null) {
             ($this->callback)($player, $data);
         }
     }
