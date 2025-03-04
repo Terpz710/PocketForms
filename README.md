@@ -10,6 +10,6 @@ PocketForms is a lightweight and easy-to-use form API for PocketMine-MP. It allo
 # Virion
 ```php
 libs:
-  - src: terpz710\pocketforms\PocketForms
+  - src: terpz710/pocketforms/PocketForms
     version: ^1.0.0
 ```
