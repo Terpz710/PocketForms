@@ -25,11 +25,16 @@ class SimpleForm implements Form {
         return $this;
     }
 
-    public function addButton(string $text, ?string $imageType = null, ?string $imagePath = null) : self{
+    public function addButton(string $text, int $imageType = -1, string $imagePath = "") : self{
         $button = ["text" => $text];
-        if ($imageType !== null && $imagePath !== null) {
-            $button["image"] = ["type" => $imageType, "data" => $imagePath];
+
+        if ($imageType !== -1) {
+            $button["image"] = [
+                "type" => $imageType === 0 ? "path" : "url",
+                "data" => $imagePath
+            ];
         }
+
         $this->buttons[] = $button;
         return $this;
     }
